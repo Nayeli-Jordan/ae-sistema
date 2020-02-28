@@ -35,4 +35,6 @@ table.aes-custum-fields  tr td textarea:-ms-input-placeholder { color: #c3c3c3; 
 table.aes-custum-fields  tr td input::placeholder,
 table.aes-custum-fields  tr td textarea::placeholder { color: #c3c3c3; }
 
-table#aes_table-colaboradores tr th 	{ width: 150px; }
+table#aes_table-colaboradores tr th,
+table#aes_table-rsocial tr th,
+table#aes_table-formato tr th 	{ width: 150px; }

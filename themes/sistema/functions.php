@@ -441,6 +441,101 @@ function colaborador_save_metas( $idcolaborador, $colaborador ){
 }
 
 
+/* Colaboradores */
+
+add_action( 'add_meta_boxes', 'rsocial_custom_metabox' );
+function rsocial_custom_metabox(){
+    add_meta_box( 'rsocial_meta', 'Información General', 'display_rsocial_atributos', 'rsocial', 'advanced', 'default');
+}
+
+function display_rsocial_atributos( $rsocial ){
+    $rsnombre 	= esc_html( get_post_meta( $rsocial->ID, 'rsocial_rsnombre', true ) );
+    $rsrfc 		= esc_html( get_post_meta( $rsocial->ID, 'rsocial_rsrfc', true ) );
+    $rsdirec 	= esc_html( get_post_meta( $rsocial->ID, 'rsocial_rsdirec', true ) );
+    $rscuenta 	= esc_html( get_post_meta( $rsocial->ID, 'rsocial_rscuenta', true ) );
+?>
+    <table class="aes-custum-fields" id="aes_table-rsocial">
+        <tr>
+            <th><label for="rsocial_rsnombre">Nombre o razón social</label></th>
+            <td><input type="text" id="rsocial_rsnombre" name="rsocial_rsnombre" value="<?php echo $rsnombre; ?>"></td>
+        </tr>
+        <tr>
+            <th><label for="rsocial_rsrfc">RFC</label></th>
+            <td><input type="text" id="rsocial_rsrfc" name="rsocial_rsrfc" value="<?php echo $rsrfc; ?>"></td>
+        </tr>
+        <tr>
+            <th><label for="rsocial_rsdirec">Dirección fiscal</label></th>
+            <td><textarea name="rsocial_rsdirec" rows="3" placeholder="Calle, número, colonia, municipio, ciudad, c.p."><?php echo $rsdirec; ?></textarea></td>
+        </tr>
+        <tr>
+            <th><label for="rsocial_rscuenta">Cuenta</label></th>
+            <td><input type="number" id="rsocial_rscuenta" name="rsocial_rscuenta" value="<?php echo $rscuenta; ?>"></td>
+        </tr>
+    </table>
+<?php }
+
+add_action( 'save_post', 'rsocial_save_metas', 10, 2 );
+function rsocial_save_metas( $idrsocial, $rsocial ){
+    if ( $rsocial->post_type == 'rsocial' ){
+        if ( isset( $_POST['rsocial_rsrfc'] ) ){
+            update_post_meta( $idcolaborador, 'rsocial_rsrfc', $_POST['rsocial_rsrfc'] );
+        }
+        if ( isset( $_POST['rsocial_rsrfc'] ) ){
+            update_post_meta( $idcolaborador, 'rsocial_rsrfc', $_POST['rsocial_rsrfc'] );
+        }
+        if ( isset( $_POST['rsocial_rsdirec'] ) ){
+            update_post_meta( $idcolaborador, 'rsocial_rsdirec', $_POST['rsocial_rsdirec'] );
+        }
+        if ( isset( $_POST['rsocial_rscuenta'] ) ){
+            update_post_meta( $idcolaborador, 'rsocial_rscuenta', $_POST['rsocial_rscuenta'] );
+        }
+    }
+}
+
+
+/* Formatos generales */
+
+add_action( 'add_meta_boxes', 'formato_custom_metabox' );
+function formato_custom_metabox(){
+    add_meta_box( 'formato_meta', 'Información General', 'display_formato_atributos', 'formato', 'advanced', 'default');
+}
+
+function display_formato_atributos( $formato ){
+    $farchivo 	= esc_html( get_post_meta( $formato->ID, 'formato_farchivo', true ) );
+    $fdescrip 	= esc_html( get_post_meta( $formato->ID, 'formato_fdescrip', true ) );
+?>
+    <table class="aes-custum-fields" id="aes_table-formato">
+        <tr>
+            <th><label class="margin-bottom-20">Archivo</label></th>
+			<td class="padding-bottom-20">
+				<div class="input-image">
+					<input type="text" name="formato_farchivo" id="formato_farchivo" class="meta-image" placeholder="Elegir archivo" value="<?php echo $farchivo; ?>">
+				<input type="button" class="button image-upload" value="Seleccionar">
+				</div>                	
+			</td>
+        </tr>
+        <tr>
+            <th><label for="formato_fdescrip">Dirección fiscal</label></th>
+            <td><textarea name="formato_fdescrip" rows="3" placeholder="Descripción del uso del formato"><?php echo $fdescrip; ?></textarea></td>
+        </tr>
+    </table>
+<?php }
+
+add_action( 'save_post', 'formato_save_metas', 10, 2 );
+function formato_save_metas( $idformato, $formato ){
+    if ( $formato->post_type == 'formato' ){
+        if ( isset( $_POST['formato_farchivo'] ) ){
+            update_post_meta( $idformato, 'formato_farchivo', $_POST['formato_farchivo'] );
+        }
+        if ( isset( $_POST['formato_fdescrip'] ) ){
+            update_post_meta( $idformato, 'formato_fdescrip', $_POST['formato_fdescrip'] );
+        }
+    }
+}
+
+
+
+
 /*
 **Custom Columns Wp-Admin
 */
