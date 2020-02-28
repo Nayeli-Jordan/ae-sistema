@@ -38,10 +38,10 @@ add_action('init', function(){
 	register_post_type( 'colaborador', $args );	
 
 
-	// Razón social
+	// Razones sociales
 	$labels = array(
-		'name'          => 'Razón social',
-		'singular_name' => 'Razón social',
+		'name'          => 'Razones sociales',
+		'singular_name' => 'Razones sociales',
 		'add_new'       => 'Nueva razón social',
 		'add_new_item'  => 'Nueva razón social',
 		'edit_item'     => 'Editar razón social',
@@ -50,7 +50,7 @@ add_action('init', function(){
 		'view_item'     => 'Ver razón social',
 		'search_items'  => 'Buscar razón social',
 		'not_found'     => 'No hay razón social.',
-		'menu_name'     => 'Razón social'
+		'menu_name'     => 'Razones sociales'
 	);
 
 	$args = array(

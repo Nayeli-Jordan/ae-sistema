@@ -592,3 +592,34 @@ function custom_colaborador_column( $column, $post_id ) {
             break;
     }
 }
+
+
+/* Formatos generales */
+
+add_filter( 'manage_formato_posts_columns', 'set_custom_edit_formato_columns' );
+function set_custom_edit_formato_columns($columns) {
+    $columns['aes_farchivo'] 	= __( 'Archivo', 'aempleo' );
+    $columns['aes_fdescrip'] 	= __( 'Descripción', 'aempleo' );
+
+    return $columns;
+}
+
+add_action( 'manage_formato_posts_custom_column' , 'custom_formato_column', 10, 2 );
+function custom_formato_column( $column, $post_id ) {
+    switch ( $column ) {
+        case 'aes_farchivo' :
+            $farchivo  = get_post_meta( $post_id, 'formato_farchivo', true );
+            if( $farchivo != "")
+                echo "<a href='" . $farchivo . "' target='_blank'>Ver</a>";
+            else
+                echo "-";
+            break;
+        case 'aes_fdescrip' :
+            $fdescrip  = get_post_meta( $post_id, 'formato_fdescrip', true );
+            if( $fdescrip != "")
+                echo $fdescrip;
+            else
+                echo "-";
+            break;
+    }
+}
