@@ -439,3 +439,61 @@ function colaborador_save_metas( $idcolaborador, $colaborador ){
         }
     }
 }
+
+
+/*
+**Custom Columns Wp-Admin
+*/
+
+/* Candidatos */
+
+add_filter( 'manage_colaborador_posts_columns', 'set_custom_edit_colaborador_columns' );
+function set_custom_edit_colaborador_columns($columns) {
+    $columns['aes_colrsocial'] 	= __( 'Razón social', 'aempleo' );
+    $columns['aes_colestado'] 	= __( 'Estado', 'aempleo' );
+    $columns['aes_contrato'] 	= __( 'Contrato', 'aempleo' );
+
+    return $columns;
+}
+
+add_action( 'manage_colaborador_posts_custom_column' , 'custom_colaborador_column', 10, 2 );
+function custom_colaborador_column( $column, $post_id ) {
+    switch ( $column ) {
+        case 'aes_colrsocial' :
+            $colrsocial  = get_post_meta( $post_id, 'colaborador_colrsocial', true );
+            if( $colrsocial != "")
+                echo $colrsocial;
+            else
+                echo "-";
+            break;
+        case 'aes_colestado' :
+            $colestado  = get_post_meta( $post_id, 'colaborador_colestado', true );
+            $colpuesto  = get_post_meta( $post_id, 'colaborador_colpuesto', true );
+            if( $colestado != "")
+                echo "** " . $colestado . " **</br>";
+            else
+                echo "-</br>";
+            if( $colpuesto != "")
+                echo $colpuesto;
+            else
+                echo "-";
+            break;
+        case 'aes_contrato' :
+            $colingreso = get_post_meta( $post_id, 'colaborador_colingreso', true );
+            $colvence  	= get_post_meta( $post_id, 'colaborador_colvence', true );
+            $colfirma  	= get_post_meta( $post_id, 'colaborador_colfirma', true );
+            if( $colingreso != "")
+                echo "Ingreso: " . date('d/m/Y', strtotime($colingreso)) . "</br>";
+            else
+                echo "-</br>";
+            if( $colfirma != "")
+            	echo "Firma: " . date('d/m/Y', strtotime($colfirma)) . "</br>";
+            else
+                echo "-</br>";
+            if( $colvence != "")
+            	echo "Vence: " . date('d/m/Y', strtotime($colvence));
+            else
+                echo "-";
+            break;
+    }
+}
