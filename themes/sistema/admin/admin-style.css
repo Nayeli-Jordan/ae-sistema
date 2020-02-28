@@ -1,0 +1,38 @@
+.margin-bottom-10		{ margin-bottom: 10px; }
+.margin-bottom-20		{ margin-bottom: 20px; }
+
+.padding-bottom-10		{ padding-bottom: 10px; }
+.padding-bottom-20		{ padding-bottom: 20px; }
+
+.mqt-custom-fields		{ width: 100%; }
+.mqt-custom-fields label  { 
+	display: block; 
+	text-align: left;
+}
+.mqt-custom-fields input[type="text"],
+.mqt-custom-fields input[type="date"],
+.mqt-custom-fields input[type="number"],
+.mqt-custom-fields input[type="email"],
+.mqt-custom-fields input[type="tel"],
+.mqt-custom-fields textarea,
+.mqt-custom-fields select  { 
+	width: 100%; 
+	margin-bottom: 5px;
+}
+
+table.aes-custum-fields,
+table.aes-custum-fields tr td input,
+table.aes-custum-fields tr td select,
+table.aes-custum-fields tr td textarea 	{ width: 100%; }
+table.aes-custum-fields tr th label {
+	display: block; 
+	text-align: left;
+}
+table.aes-custum-fields  tr td input::-webkit-input-placeholder,
+table.aes-custum-fields  tr td textarea::-webkit-input-placeholder { color: #c3c3c3; }
+table.aes-custum-fields  tr td input:-ms-input-placeholder,
+table.aes-custum-fields  tr td textarea:-ms-input-placeholder { color: #c3c3c3; }
+table.aes-custum-fields  tr td input::placeholder,
+table.aes-custum-fields  tr td textarea::placeholder { color: #c3c3c3; }
+
+table#aes_table-colaboradores tr th 	{ width: 150px; }
