@@ -79,6 +79,17 @@ remove_action( 'admin_print_styles', 'print_emoji_styles' );
 
 
 /**
+* Perfiles - Permisos
+*/
+//Hide item admin menu for certain user profile
+function qo_remove_menu_items() {
+    remove_menu_page('edit.php'); // Posts
+    remove_menu_page('edit-comments.php'); // Comments
+}
+add_action( 'admin_menu', 'qo_remove_menu_items' );
+
+
+/**
 * SEO y Analitics
 **/
 
@@ -126,10 +137,19 @@ function colaborador_custom_metabox(){
 
 function display_colaborador_atributos( $colaborador ){
     $colnumemp 	= esc_html( get_post_meta( $colaborador->ID, 'colaborador_colnumemp', true ) );
-    $colestado 	= esc_html( get_post_meta( $colaborador->ID, 'colaborador_colestado', true ) );
+    $colnombre 	= esc_html( get_post_meta( $colaborador->ID, 'colaborador_colnombre', true ) );
+    $colapepat 	= esc_html( get_post_meta( $colaborador->ID, 'colaborador_colapepat', true ) );
+    $colapemat 	= esc_html( get_post_meta( $colaborador->ID, 'colaborador_colapemat', true ) );
     $colrsocial = esc_html( get_post_meta( $colaborador->ID, 'colaborador_colrsocial', true ) );
-    $coldireccion = esc_html( get_post_meta( $colaborador->ID, 'colaborador_coldireccion', true ) );
-    $colcp 		= esc_html( get_post_meta( $colaborador->ID, 'colaborador_colcp', true ) );
+    $colcliente = esc_html( get_post_meta( $colaborador->ID, 'colaborador_colcliente', true ) );
+
+    $colestado 	= esc_html( get_post_meta( $colaborador->ID, 'colaborador_colestado', true ) );
+    $coldcalle 	= esc_html( get_post_meta( $colaborador->ID, 'colaborador_coldcalle', true ) );
+    $coldnum 	= esc_html( get_post_meta( $colaborador->ID, 'colaborador_coldnum', true ) );
+    $coldcol 	= esc_html( get_post_meta( $colaborador->ID, 'colaborador_coldcol', true ) );
+    $colddel 	= esc_html( get_post_meta( $colaborador->ID, 'colaborador_colddel', true ) );
+    $coldest 	= esc_html( get_post_meta( $colaborador->ID, 'colaborador_coldest', true ) );
+    $coldcp 	= esc_html( get_post_meta( $colaborador->ID, 'colaborador_coldcp', true ) );
     $coltel 	= esc_html( get_post_meta( $colaborador->ID, 'colaborador_coltel', true ) );
     $colcel 	= esc_html( get_post_meta( $colaborador->ID, 'colaborador_colcel', true ) );
     $collnacim 	= esc_html( get_post_meta( $colaborador->ID, 'colaborador_collnacim', true ) );
@@ -137,11 +157,12 @@ function display_colaborador_atributos( $colaborador ){
     $colrfc 	= esc_html( get_post_meta( $colaborador->ID, 'colaborador_colrfc', true ) );
     $colnss 	= esc_html( get_post_meta( $colaborador->ID, 'colaborador_colnss', true ) );
     $colfnacim 	= esc_html( get_post_meta( $colaborador->ID, 'colaborador_colfnacim', true ) );
-    $colpresta 	= esc_html( get_post_meta( $colaborador->ID, 'colaborador_colpresta', true ) );
-    $colcliente = esc_html( get_post_meta( $colaborador->ID, 'colaborador_colcliente', true ) );
     $colpuesto  = esc_html( get_post_meta( $colaborador->ID, 'colaborador_colpuesto', true ) );
+    $colpresta 	= esc_html( get_post_meta( $colaborador->ID, 'colaborador_colpresta', true ) );
+    $colubicacion  = esc_html( get_post_meta( $colaborador->ID, 'colaborador_colubicacion', true ) );
     $colingreso = esc_html( get_post_meta( $colaborador->ID, 'colaborador_colingreso', true ) );
     $colsueldo  = esc_html( get_post_meta( $colaborador->ID, 'colaborador_colsueldo', true ) );
+    $colsueldot = esc_html( get_post_meta( $colaborador->ID, 'colaborador_colsueldot', true ) );
     $colnomina  = esc_html( get_post_meta( $colaborador->ID, 'colaborador_colnomina', true ) );
     $colvence   = esc_html( get_post_meta( $colaborador->ID, 'colaborador_colvence', true ) );
     $colfirma   = esc_html( get_post_meta( $colaborador->ID, 'colaborador_colfirma', true ) );
@@ -149,17 +170,36 @@ function display_colaborador_atributos( $colaborador ){
     $colecivil  = esc_html( get_post_meta( $colaborador->ID, 'colaborador_colecivil', true ) );
     $colsexo    = esc_html( get_post_meta( $colaborador->ID, 'colaborador_colsexo', true ) );
     $colinfonavit = esc_html( get_post_meta( $colaborador->ID, 'colaborador_colinfonavit', true ) );
-    $colncredit   = esc_html( get_post_meta( $colaborador->ID, 'colaborador_colncredit', true ) );
-    $colvdesc   = esc_html( get_post_meta( $colaborador->ID, 'colaborador_colvdesc', true ) );
-    $colapriv   = esc_html( get_post_meta( $colaborador->ID, 'colaborador_colapriv', true ) );
-    $colubicacion  = esc_html( get_post_meta( $colaborador->ID, 'colaborador_colubicacion', true ) );
+    $colncredinf = esc_html( get_post_meta( $colaborador->ID, 'colaborador_colncredinf', true ) );
+    $coltdesc   = esc_html( get_post_meta( $colaborador->ID, 'colaborador_coltdesc', true ) );
+    $colfonacot   = esc_html( get_post_meta( $colaborador->ID, 'colaborador_colfonacot', true ) );    
+    $colncredfon = esc_html( get_post_meta( $colaborador->ID, 'colaborador_colncredfon', true ) );
+    $colpensali = esc_html( get_post_meta( $colaborador->ID, 'colaborador_colpensali', true ) );
     $colbanco   = esc_html( get_post_meta( $colaborador->ID, 'colaborador_colbanco', true ) );
     $colncuenta = esc_html( get_post_meta( $colaborador->ID, 'colaborador_colncuenta', true ) );
     $colclaveint = esc_html( get_post_meta( $colaborador->ID, 'colaborador_colclaveint', true ) );
+    $colnotarjeta = esc_html( get_post_meta( $colaborador->ID, 'colaborador_colnotarjeta', true ) );
     $colcorreo  = esc_html( get_post_meta( $colaborador->ID, 'colaborador_colcorreo', true ) );
+    $colvaldes  = esc_html( get_post_meta( $colaborador->ID, 'colaborador_colvaldes', true ) );
+    $colvalcant  = esc_html( get_post_meta( $colaborador->ID, 'colaborador_colvalcant', true ) );
+    $colapriv   = esc_html( get_post_meta( $colaborador->ID, 'colaborador_colapriv', true ) );
+    $colpsico   = esc_html( get_post_meta( $colaborador->ID, 'colaborador_colpsico', true ) );
+    $colcredencial = esc_html( get_post_meta( $colaborador->ID, 'colaborador_colcredencial', true ) );
     $colobserv  = esc_html( get_post_meta( $colaborador->ID, 'colaborador_colobserv', true ) );
 ?>
     <table class="aes-custum-fields" id="aes_table-colaboradores">
+        <tr>
+            <th><label for="colaborador_colnombre">Nombre(s)</label></th>
+            <td><input type="text" id="colaborador_colnombre" name="colaborador_colnombre" value="<?php echo $colnombre; ?>"></td>
+        </tr>
+        <tr>
+            <th><label for="colaborador_colapepat">Apellido paterno</label></th>
+            <td><input type="text" id="colaborador_colapepat" name="colaborador_colapepat" value="<?php echo $colapepat; ?>"></td>
+        </tr>
+        <tr>
+            <th><label for="colaborador_colapemat" class="margin-bottom-20">Apellido materno</label></th>
+            <td class="padding-bottom-20"><input type="text" id="colaborador_colapemat" name="colaborador_colapemat" value="<?php echo $colapemat; ?>"></td>
+        </tr>
         <tr>
             <th><label for="colaborador_colnumemp">No. Empleado</label></th>
             <td><input type="number" id="colaborador_colnumemp" name="colaborador_colnumemp" value="<?php echo $colnumemp; ?>" placeholder="0"></td>
@@ -175,23 +215,81 @@ function display_colaborador_atributos( $colaborador ){
             </td>
         </tr>
         <tr>
-            <th><label for="colaborador_colrsocial" class="margin-bottom-20">Razón social</label></th>
-            <td class="padding-bottom-20">
+            <th><label for="colaborador_colrsocial">Razón social</label></th>
+            <td>
 				<select name="colaborador_colrsocial">
                     <option value="" <?php selected($colrsocial, ''); ?> disabled selected>Selecciona...</option>
-                    <option value="Altoempleo Tlalnepantla, S.A. de C.V." <?php selected($colrsocial, 'Altoempleo Tlalnepantla, S.A. de C.V.'); ?>>Altoempleo Tlalnepantla, S.A. de C.V.</option>
-                    <option value="Altoempleo Izcalli, S.A. de C.V." <?php selected($colrsocial, 'Altoempleo Izcalli, S.A. de C.V.'); ?>>Altoempleo Izcalli, S.A. de C.V.</option>
-                    <option value="Alto Empleo, S.A. de C.V." <?php selected($colrsocial, 'Alto Empleo, S.A. de C.V.'); ?>>Alto Empleo, S.A. de C.V.</option>
+                    <option value="Altoempleo s.a. de c.v." <?php selected($colrsocial, 'Altoempleo s.a. de c.v.'); ?>>Altoempleo s.a. de c.v.</option>
+                    <option value="Alto empleo de izcalli s.a. de c.v." <?php selected($colrsocial, 'Alto empleo de izcalli s.a. de c.v.'); ?>>Alto empleo de izcalli s.a. de c.v.</option>
+                    <option value="Altoempleo tlalnepantla s.a. de c.v." <?php selected($colrsocial, 'Altoempleo tlalnepantla s.a. de c.v.'); ?>>Altoempleo tlalnepantla s.a. de c.v.</option>
+                    <option value="High enterprises consulting s.a. de c.v." <?php selected($colrsocial, 'High enterprises consulting s.a. de c.v.'); ?>>High enterprises consulting s.a. de c.v.</option>
+                    <option value="Comercializadora bolita s.a. de c.v." <?php selected($colrsocial, 'Comercializadora bolita s.a. de c.v.'); ?>>Comercializadora bolita s.a. de c.v.</option>
+                </select>
+            </td>
+        </tr>        
+        <tr>
+            <th><label for="colaborador_colcliente" class="margin-bottom-20">Cliente</label></th>
+            <td class="padding-bottom-20"><input type="text" id="colaborador_colcliente" name="colaborador_colcliente" value="<?php echo $colcliente; ?>" placeholder="Mazda Tláhuac"></td>
+        </tr>
+        <tr>
+            <th><label for="colaborador_coldcalle">Calle</label></th>
+            <td><input type="text" id="colaborador_coldcalle" name="colaborador_coldcalle" value="<?php echo $coldcalle; ?>"></td>
+        </tr>
+        <tr>
+            <th><label for="colaborador_coldnum">Número</label></th>
+            <td><input type="text" id="colaborador_coldnum" name="colaborador_coldnum" value="<?php echo $coldnum; ?>"></td>
+        </tr>
+        <tr>
+            <th><label for="colaborador_coldcol">Colonia</label></th>
+            <td><input type="text" id="colaborador_coldcol" name="colaborador_coldcol" value="<?php echo $coldcol; ?>"></td>
+        </tr>
+        <tr>
+            <th><label for="colaborador_colddel">Delegación</label></th>
+            <td><input type="text" id="colaborador_colddel" name="colaborador_colddel" value="<?php echo $colddel; ?>"></td>
+        </tr>
+        <tr>
+            <th><label for="colaborador_coldest">Estado</label></th>
+            <td>
+				<select name="colaborador_coldest">
+                    <option value="" <?php selected($coldest, ''); ?> disabled selected>Selecciona...</option>
+                    <option value="Aguascalientes" <?php selected($coldest, 'Aguascalientes'); ?>>Aguascalientes</option>
+                    <option value="Baja California" <?php selected($coldest, 'Baja California'); ?>>Baja California</option>
+                    <option value="Baja California Sur" <?php selected($coldest, 'Baja California Sur'); ?>>Baja California Sur</option>
+                    <option value="Campeche" <?php selected($coldest, 'Campeche'); ?>>Campeche</option>
+                    <option value="Chiapas" <?php selected($coldest, 'Chiapas'); ?>>Chiapas</option>
+                    <option value="Chihuahua" <?php selected($coldest, 'Chihuahua'); ?>>Chihuahua</option>
+                    <option value="Coahuila de Zaragoza" <?php selected($coldest, 'Coahuila de Zaragoza'); ?>>Coahuila de Zaragoza</option>
+                    <option value="Colima" <?php selected($coldest, 'Colima'); ?>>Colima</option>
+                    <option value="Ciudad de México" <?php selected($coldest, 'Ciudad de México'); ?>>Ciudad de México</option>
+                    <option value="Durango" <?php selected($coldest, 'Durango'); ?>>Durango</option>
+                    <option value="Guanajuato" <?php selected($coldest, 'Guanajuato'); ?>>Guanajuato</option>
+                    <option value="Guerrero" <?php selected($coldest, 'Guerrero'); ?>>Guerrero</option>
+                    <option value="Hidalgo" <?php selected($coldest, 'Hidalgo'); ?>>Hidalgo</option>
+                    <option value="Jalisco" <?php selected($coldest, 'Jalisco'); ?>>Jalisco</option>
+                    <option value="Estado de México" <?php selected($coldest, 'Estado de México'); ?>>Estado de México</option>
+                    <option value="Michoacán de Ocampo" <?php selected($coldest, 'Michoacán de Ocampo'); ?>>Michoacán de Ocampo</option>
+                    <option value="Morelos" <?php selected($coldest, 'Morelos'); ?>>Morelos</option>
+                    <option value="Nayarit" <?php selected($coldest, 'Nayarit'); ?>>Nayarit</option>
+                    <option value="Nuevo León" <?php selected($coldest, 'Nuevo León'); ?>>Nuevo León</option>
+                    <option value="Oaxaca" <?php selected($coldest, 'Oaxaca'); ?>>Oaxaca</option>
+                    <option value="Puebla" <?php selected($coldest, 'Puebla'); ?>>Puebla</option>
+                    <option value="Querétaro" <?php selected($coldest, 'Querétaro'); ?>>Querétaro</option>
+                    <option value="Quintana Roo" <?php selected($coldest, 'Quintana Roo'); ?>>Quintana Roo</option>
+                    <option value="San Luis Potosí" <?php selected($coldest, 'San Luis Potosí'); ?>>San Luis Potosí</option>
+                    <option value="Sinaloa" <?php selected($coldest, 'Sinaloa'); ?>>Sinaloa</option>
+                    <option value="Sonora" <?php selected($coldest, 'Sonora'); ?>>Sonora</option>
+                    <option value="Tabasco" <?php selected($coldest, 'Tabasco'); ?>>Tabasco</option>
+                    <option value="Tamaulipas" <?php selected($coldest, 'Tamaulipas'); ?>>Tamaulipas</option>
+                    <option value="Tlaxcala" <?php selected($coldest, 'Tlaxcala'); ?>>Tlaxcala</option>
+                    <option value="Veracruz de Ignacio de la Llave" <?php selected($coldest, 'Veracruz de Ignacio de la Llave'); ?>>Veracruz de Ignacio de la Llave</option>
+                    <option value="Yucatán" <?php selected($coldest, 'Yucatán'); ?>>Yucatán</option>
+                    <option value="Zacatecas" <?php selected($coldest, 'Zacatecas'); ?>>Zacatecas</option>
                 </select>
             </td>
         </tr>
         <tr>
-            <th><label for="colaborador_coldireccion">Dirección</label></th>
-            <td><textarea name="colaborador_coldireccion" rows="3" placeholder="Calle, número, colonia, municipio y ciudad"><?php echo $coldireccion; ?></textarea></td>
-        </tr>
-        <tr>
-            <th><label for="colaborador_colcp">C.P.</label></th>
-            <td><input type="number" id="colaborador_colcp" name="colaborador_colcp" value="<?php echo $colcp; ?>" placeholder="11000"></td>
+            <th><label for="colaborador_coldcp" class="margin-bottom-20">C.P.</label></th>
+            <td class="padding-bottom-20"><input type="number" id="colaborador_coldcp" name="colaborador_coldcp" value="<?php echo $coldcp; ?>" placeholder="11000"></td>
         </tr>
         <tr>
             <th><label for="colaborador_coltel">Teléfono casa</label></th>
@@ -203,7 +301,43 @@ function display_colaborador_atributos( $colaborador ){
         </tr>
         <tr>
             <th><label for="colaborador_collnacim">Lugar de Nacimiento</label></th>
-            <td><input type="text" id="colaborador_collnacim" name="colaborador_collnacim" value="<?php echo $collnacim; ?>" placeholder="Ciudad de México"></td>
+            <td>
+				<select name="colaborador_collnacim">
+                    <option value="" <?php selected($collnacim, ''); ?> disabled selected>Selecciona...</option>
+                    <option value="Aguascalientes" <?php selected($collnacim, 'Aguascalientes'); ?>>Aguascalientes</option>
+                    <option value="Baja California" <?php selected($collnacim, 'Baja California'); ?>>Baja California</option>
+                    <option value="Baja California Sur" <?php selected($collnacim, 'Baja California Sur'); ?>>Baja California Sur</option>
+                    <option value="Campeche" <?php selected($collnacim, 'Campeche'); ?>>Campeche</option>
+                    <option value="Chiapas" <?php selected($collnacim, 'Chiapas'); ?>>Chiapas</option>
+                    <option value="Chihuahua" <?php selected($collnacim, 'Chihuahua'); ?>>Chihuahua</option>
+                    <option value="Coahuila de Zaragoza" <?php selected($collnacim, 'Coahuila de Zaragoza'); ?>>Coahuila de Zaragoza</option>
+                    <option value="Colima" <?php selected($collnacim, 'Colima'); ?>>Colima</option>
+                    <option value="Ciudad de México" <?php selected($collnacim, 'Ciudad de México'); ?>>Ciudad de México</option>
+                    <option value="Durango" <?php selected($collnacim, 'Durango'); ?>>Durango</option>
+                    <option value="Guanajuato" <?php selected($collnacim, 'Guanajuato'); ?>>Guanajuato</option>
+                    <option value="Guerrero" <?php selected($collnacim, 'Guerrero'); ?>>Guerrero</option>
+                    <option value="Hidalgo" <?php selected($collnacim, 'Hidalgo'); ?>>Hidalgo</option>
+                    <option value="Jalisco" <?php selected($collnacim, 'Jalisco'); ?>>Jalisco</option>
+                    <option value="Estado de México" <?php selected($collnacim, 'Estado de México'); ?>>Estado de México</option>
+                    <option value="Michoacán de Ocampo" <?php selected($collnacim, 'Michoacán de Ocampo'); ?>>Michoacán de Ocampo</option>
+                    <option value="Morelos" <?php selected($collnacim, 'Morelos'); ?>>Morelos</option>
+                    <option value="Nayarit" <?php selected($collnacim, 'Nayarit'); ?>>Nayarit</option>
+                    <option value="Nuevo León" <?php selected($collnacim, 'Nuevo León'); ?>>Nuevo León</option>
+                    <option value="Oaxaca" <?php selected($collnacim, 'Oaxaca'); ?>>Oaxaca</option>
+                    <option value="Puebla" <?php selected($collnacim, 'Puebla'); ?>>Puebla</option>
+                    <option value="Querétaro" <?php selected($collnacim, 'Querétaro'); ?>>Querétaro</option>
+                    <option value="Quintana Roo" <?php selected($collnacim, 'Quintana Roo'); ?>>Quintana Roo</option>
+                    <option value="San Luis Potosí" <?php selected($collnacim, 'San Luis Potosí'); ?>>San Luis Potosí</option>
+                    <option value="Sinaloa" <?php selected($collnacim, 'Sinaloa'); ?>>Sinaloa</option>
+                    <option value="Sonora" <?php selected($collnacim, 'Sonora'); ?>>Sonora</option>
+                    <option value="Tabasco" <?php selected($collnacim, 'Tabasco'); ?>>Tabasco</option>
+                    <option value="Tamaulipas" <?php selected($collnacim, 'Tamaulipas'); ?>>Tamaulipas</option>
+                    <option value="Tlaxcala" <?php selected($collnacim, 'Tlaxcala'); ?>>Tlaxcala</option>
+                    <option value="Veracruz de Ignacio de la Llave" <?php selected($collnacim, 'Veracruz de Ignacio de la Llave'); ?>>Veracruz de Ignacio de la Llave</option>
+                    <option value="Yucatán" <?php selected($collnacim, 'Yucatán'); ?>>Yucatán</option>
+                    <option value="Zacatecas" <?php selected($collnacim, 'Zacatecas'); ?>>Zacatecas</option>
+                </select>
+            </td>
         </tr>
         <tr>
             <th><label for="colaborador_colfnacim">Fecha de Nacimiento</label></th>
@@ -234,27 +368,69 @@ function display_colaborador_atributos( $colaborador ){
         </tr>
         <tr>
             <th><label for="colaborador_colcurp">CURP</label></th>
-            <td><input type="text" id="colaborador_colcurp" name="colaborador_colcurp" value="<?php echo $colcurp; ?>" placeholder="Sin espacios"></td>
+            <td><input type="text" id="colaborador_colcurp" name="colaborador_colcurp" value="<?php echo $colcurp; ?>" maxlength="18" placeholder="Sin espacios"></td>
         </tr>
         <tr>
             <th><label for="colaborador_colrfc">RFC</label></th>
-            <td><input type="text" id="colaborador_colrfc" name="colaborador_colrfc" value="<?php echo $colrfc; ?>" placeholder="Sin espacios"></td>
+            <td><input type="text" id="colaborador_colrfc" name="colaborador_colrfc" value="<?php echo $colrfc; ?>"maxlength="13" placeholder="Sin espacios"></td>
         </tr>
         <tr>
-            <th><label for="colaborador_colnss">NSS</label></th>
-            <td><input type="number" id="colaborador_colnss" name="colaborador_colnss" value="<?php echo $colnss; ?>" placeholder="Sin espacios"></td>
-        </tr>
-        <tr>
-            <th><label for="colaborador_colpresta" class="margin-bottom-20">Prestaciones</label></th>
-            <td class="padding-bottom-20"><input type="text" id="colaborador_colpresta" name="colaborador_colpresta" value="<?php echo $colpresta; ?>" placeholder="de Ley"></td>
-        </tr>
-        <tr>
-            <th><label for="colaborador_colcliente">Cliente</label></th>
-            <td><input type="text" id="colaborador_colcliente" name="colaborador_colcliente" value="<?php echo $colcliente; ?>" placeholder="Mazda Tláhuac"></td>
+            <th><label for="colaborador_colnss" class="margin-bottom-20">NSS</label></th>
+            <td class="padding-bottom-20"><input type="text" id="colaborador_colnss" name="colaborador_colnss" value="<?php echo $colnss; ?>"maxlength="11" placeholder="Sin espacios"></td>
         </tr>
         <tr>
             <th><label for="colaborador_colpuesto">Puesto</label></th>
             <td><input type="text" id="colaborador_colpuesto" name="colaborador_colpuesto" value="<?php echo $colpuesto; ?>" placeholder="Promotor"></td>
+        </tr>
+        <tr>
+            <th><label for="colaborador_colpresta">Prestaciones</label></th>
+            <td>
+				<select name="colaborador_colpresta">
+                    <option value="" <?php selected($colpresta, ''); ?> disabled selected>Selecciona...</option>
+                    <option value="de Ley" <?php selected($colpresta, 'de Ley'); ?>>de Ley</option>
+                    <option value="superiores" <?php selected($colpresta, 'superiores'); ?>>superiores</option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <th><label for="colaborador_colubicacion">Ubicación</label></th>
+            <td>
+				<select name="colaborador_colubicacion">
+                    <option value="" <?php selected($colubicacion, ''); ?> disabled selected>Selecciona...</option>
+                    <option value="Aguascalientes" <?php selected($colubicacion, 'Aguascalientes'); ?>>Aguascalientes</option>
+                    <option value="Baja California" <?php selected($colubicacion, 'Baja California'); ?>>Baja California</option>
+                    <option value="Baja California Sur" <?php selected($colubicacion, 'Baja California Sur'); ?>>Baja California Sur</option>
+                    <option value="Campeche" <?php selected($colubicacion, 'Campeche'); ?>>Campeche</option>
+                    <option value="Chiapas" <?php selected($colubicacion, 'Chiapas'); ?>>Chiapas</option>
+                    <option value="Chihuahua" <?php selected($colubicacion, 'Chihuahua'); ?>>Chihuahua</option>
+                    <option value="Coahuila de Zaragoza" <?php selected($colubicacion, 'Coahuila de Zaragoza'); ?>>Coahuila de Zaragoza</option>
+                    <option value="Colima" <?php selected($colubicacion, 'Colima'); ?>>Colima</option>
+                    <option value="Ciudad de México" <?php selected($colubicacion, 'Ciudad de México'); ?>>Ciudad de México</option>
+                    <option value="Durango" <?php selected($colubicacion, 'Durango'); ?>>Durango</option>
+                    <option value="Guanajuato" <?php selected($colubicacion, 'Guanajuato'); ?>>Guanajuato</option>
+                    <option value="Guerrero" <?php selected($colubicacion, 'Guerrero'); ?>>Guerrero</option>
+                    <option value="Hidalgo" <?php selected($colubicacion, 'Hidalgo'); ?>>Hidalgo</option>
+                    <option value="Jalisco" <?php selected($colubicacion, 'Jalisco'); ?>>Jalisco</option>
+                    <option value="Estado de México" <?php selected($colubicacion, 'Estado de México'); ?>>Estado de México</option>
+                    <option value="Michoacán de Ocampo" <?php selected($colubicacion, 'Michoacán de Ocampo'); ?>>Michoacán de Ocampo</option>
+                    <option value="Morelos" <?php selected($colubicacion, 'Morelos'); ?>>Morelos</option>
+                    <option value="Nayarit" <?php selected($colubicacion, 'Nayarit'); ?>>Nayarit</option>
+                    <option value="Nuevo León" <?php selected($colubicacion, 'Nuevo León'); ?>>Nuevo León</option>
+                    <option value="Oaxaca" <?php selected($colubicacion, 'Oaxaca'); ?>>Oaxaca</option>
+                    <option value="Puebla" <?php selected($colubicacion, 'Puebla'); ?>>Puebla</option>
+                    <option value="Querétaro" <?php selected($colubicacion, 'Querétaro'); ?>>Querétaro</option>
+                    <option value="Quintana Roo" <?php selected($colubicacion, 'Quintana Roo'); ?>>Quintana Roo</option>
+                    <option value="San Luis Potosí" <?php selected($colubicacion, 'San Luis Potosí'); ?>>San Luis Potosí</option>
+                    <option value="Sinaloa" <?php selected($colubicacion, 'Sinaloa'); ?>>Sinaloa</option>
+                    <option value="Sonora" <?php selected($colubicacion, 'Sonora'); ?>>Sonora</option>
+                    <option value="Tabasco" <?php selected($colubicacion, 'Tabasco'); ?>>Tabasco</option>
+                    <option value="Tamaulipas" <?php selected($colubicacion, 'Tamaulipas'); ?>>Tamaulipas</option>
+                    <option value="Tlaxcala" <?php selected($colubicacion, 'Tlaxcala'); ?>>Tlaxcala</option>
+                    <option value="Veracruz de Ignacio de la Llave" <?php selected($colubicacion, 'Veracruz de Ignacio de la Llave'); ?>>Veracruz de Ignacio de la Llave</option>
+                    <option value="Yucatán" <?php selected($colubicacion, 'Yucatán'); ?>>Yucatán</option>
+                    <option value="Zacatecas" <?php selected($colubicacion, 'Zacatecas'); ?>>Zacatecas</option>
+                </select>
+            </td>
         </tr>
         <tr>
             <th><label for="colaborador_colingreso">Fecha de Ingreso</label></th>
@@ -262,11 +438,20 @@ function display_colaborador_atributos( $colaborador ){
         </tr>
         <tr>
             <th><label for="colaborador_colsueldo">Sueldo</label></th>
-            <td><input type="number" id="colaborador_colsueldo" name="colaborador_colsueldo" value="<?php echo $colsueldo; ?>" placeholder="4000"></td>
+            <td><input type="number" id="colaborador_colsueldo" name="colaborador_colsueldo" value="<?php echo $colsueldo; ?>" step="0.01" placeholder="0.00"><input type="text" id="colaborador_colsueldot" name="colaborador_colsueldot" value="<?php echo $colsueldot; ?>" placeholder="Cantidad con letra"></td>
         </tr>
         <tr>
             <th><label for="colaborador_colnomina">Nómina</label></th>
-            <td><input type="text" id="colaborador_colnomina" name="colaborador_colnomina" value="<?php echo $colnomina; ?>" placeholder="Quincenal"></td>
+            <td>
+				<select name="colaborador_colnomina">
+                    <option value="" <?php selected($colnomina, ''); ?> disabled selected>Selecciona...</option>
+                    <option value="semanal" <?php selected($colnomina, 'semanal'); ?>>semanal</option>
+                    <option value="catorcenal" <?php selected($colnomina, 'catorcenal'); ?>>catorcenal</option>
+                    <option value="quicenal" <?php selected($colnomina, 'quicenal'); ?>>quicenal</option>
+                    <option value="mensual" <?php selected($colnomina, 'mensual'); ?>>mensual</option>
+                    <option value="asimilado" <?php selected($colnomina, 'asimilado'); ?>>asimilado</option>
+                </select>
+            </td>
         </tr>
         <tr>
             <th><label for="colaborador_colvence">Vencimiento de contrato</label></th>
@@ -291,12 +476,161 @@ function display_colaborador_atributos( $colaborador ){
             </td>
         </tr>
         <tr>
-            <th><label for="colaborador_colncredit">No. de Credito</label></th>
-            <td><input type="number" id="colaborador_colncredit" name="colaborador_colncredit" value="<?php echo $colncredit; ?>"></td>
+            <th><label for="colaborador_colncredinf">No. de Credito</label></th>
+            <td><input type="text" id="colaborador_colncredinf" name="colaborador_colncredinf" value="<?php echo $colncredinf; ?>"></td>
+        </tr>        
+        <tr>
+            <th><label for="colaborador_coltdesc">Tipo de descuento</label></th>
+            <td><input type="text" id="colaborador_coltdesc" name="colaborador_coltdesc" value="<?php echo $coltdesc; ?>"></td>
         </tr>
         <tr>
-            <th><label for="colaborador_colvdesc">Valor de Descuento</label></th>
-            <td><input type="number" id="colaborador_colvdesc" name="colaborador_colvdesc" value="<?php echo $colvdesc; ?>"></td>
+            <th><label for="colaborador_colfonacot">Fonacot</label></th>
+            <td>
+				<select name="colaborador_colfonacot">
+                    <option value="" <?php selected($colfonacot, ''); ?> disabled selected>Selecciona...</option>
+                    <option value="Sí" <?php selected($colfonacot, 'Sí'); ?>>Sí</option>
+                    <option value="No" <?php selected($colfonacot, 'No'); ?>>No</option>
+                </select>
+            </td>
+        </tr>        
+        <tr>
+            <th><label for="colaborador_colncredfon">No. de Credito</label></th>
+            <td><input type="text" id="colaborador_colncredfon" name="colaborador_colncredfon" value="<?php echo $colncredfon; ?>"></td>
+        </tr>  
+        <tr>
+            <th><label for="colaborador_colpensali">Pensión alimenticia</label></th>
+            <td><textarea name="colaborador_colpensali" rows="5"><?php echo $colpensali; ?></textarea></td>
+        </tr> <!-- Campo abierto -->
+        <tr>
+            <th><label for="colaborador_colbanco">Banco</label></th>
+            <td>
+            	<select name="colaborador_colbanco">
+                    <option value="" <?php selected($colbanco, ''); ?> disabled selected>Selecciona...</option>
+                    <option value="BANAMEX" <?php selected($colbanco, 'BANAMEX'); ?>>BANAMEX</option>
+                    <option value="BANCOMEXT" <?php selected($colbanco, 'BANCOMEXT'); ?>>BANCOMEXT</option>
+                    <option value="BANOBRAS" <?php selected($colbanco, 'BANOBRAS'); ?>>BANOBRAS</option>
+                    <option value="BBVA BANCOMER" <?php selected($colbanco, 'BBVA BANCOMER'); ?>>BBVA BANCOMER</option>
+                    <option value="SANTANDER" <?php selected($colbanco, 'SANTANDER'); ?>>SANTANDER</option>
+                    <option value="BANJERCITO" <?php selected($colbanco, 'BANJERCITO'); ?>>BANJERCITO</option>
+                    <option value="HSBC" <?php selected($colbanco, 'HSBC'); ?>>HSBC</option>
+                    <option value="BAJIO" <?php selected($colbanco, 'BAJIO'); ?>>BAJIO</option>
+                    <option value="IXE" <?php selected($colbanco, 'IXE'); ?>>IXE</option>
+                    <option value="INBURSA" <?php selected($colbanco, 'INBURSA'); ?>>INBURSA</option>
+                    <option value="INTERACCIONES" <?php selected($colbanco, 'INTERACCIONES'); ?>>INTERACCIONES</option>
+                    <option value="MIFEL" <?php selected($colbanco, 'MIFEL'); ?>>MIFEL</option>
+                    <option value="SCOTIABANK" <?php selected($colbanco, 'SCOTIABANK'); ?>>SCOTIABANK</option>
+                    <option value="BANREGIO" <?php selected($colbanco, 'BANREGIO'); ?>>BANREGIO</option>
+                    <option value="INVEX" <?php selected($colbanco, 'INVEX'); ?>>INVEX</option>
+                    <option value="BANSI" <?php selected($colbanco, 'BANSI'); ?>>BANSI</option>
+                    <option value="AFIRME" <?php selected($colbanco, 'AFIRME'); ?>>AFIRME</option>
+                    <option value="BANORTE" <?php selected($colbanco, 'BANORTE'); ?>>BANORTE</option>
+                    <option value="THE ROYAL BANK" <?php selected($colbanco, 'THE ROYAL BANK'); ?>>THE ROYAL BANK</option>
+                    <option value="AMERICAN EXPRESS" <?php selected($colbanco, 'AMERICAN EXPRESS'); ?>>AMERICAN EXPRESS</option>
+                    <option value="BAMSA" <?php selected($colbanco, 'BAMSA'); ?>>BAMSA</option>
+                    <option value="TOKYO" <?php selected($colbanco, 'TOKYO'); ?>>TOKYO</option>
+                    <option value="JP MORGAN" <?php selected($colbanco, 'JP MORGAN'); ?>>JP MORGAN</option>
+                    <option value="BMONEX" <?php selected($colbanco, 'BMONEX'); ?>>BMONEX</option>
+                    <option value="VE POR MAS" <?php selected($colbanco, 'VE POR MAS'); ?>>VE POR MAS</option>
+                    <option value="ING" <?php selected($colbanco, 'ING'); ?>>ING</option>
+                    <option value="DEUTSCHE" <?php selected($colbanco, 'DEUTSCHE'); ?>>DEUTSCHE</option>
+                    <option value="CREDIT SUISSE" <?php selected($colbanco, 'CREDIT SUISSE'); ?>>CREDIT SUISSE</option>
+                    <option value="AZTECA" <?php selected($colbanco, 'AZTECA'); ?>>AZTECA</option>
+                    <option value="AUTOFIN" <?php selected($colbanco, 'AUTOFIN'); ?>>AUTOFIN</option>
+                    <option value="BARCLAYS" <?php selected($colbanco, 'BARCLAYS'); ?>>BARCLAYS</option>
+                    <option value="COMPARTAMOS" <?php selected($colbanco, 'COMPARTAMOS'); ?>>COMPARTAMOS</option>
+                    <option value="BANCO FAMSA" <?php selected($colbanco, 'BANCO FAMSA'); ?>>BANCO FAMSA</option>
+                    <option value="BMULTIVA" <?php selected($colbanco, 'BMULTIVA'); ?>>BMULTIVA</option>
+                    <option value="ACTINVER" <?php selected($colbanco, 'ACTINVER'); ?>>ACTINVER</option>
+                    <option value="WAL-MART" <?php selected($colbanco, 'WAL-MART'); ?>>WAL-MART</option>
+                    <option value="NAFIN" <?php selected($colbanco, 'NAFIN'); ?>>NAFIN</option>
+                    <option value="INTERBANCO" <?php selected($colbanco, 'INTERBANCO'); ?>>INTERBANCO</option>
+                    <option value="BANCOPPEL" <?php selected($colbanco, 'BANCOPPEL'); ?>>BANCOPPEL</option>
+                    <option value="ABC CAPITAL" <?php selected($colbanco, 'ABC CAPITAL'); ?>>ABC CAPITAL</option>
+                    <option value="UBS BANK" <?php selected($colbanco, 'UBS BANK'); ?>>UBS BANK</option>
+                    <option value="CONSUBANCO" <?php selected($colbanco, 'CONSUBANCO'); ?>>CONSUBANCO</option>
+                    <option value="VOLKSWAGEN" <?php selected($colbanco, 'VOLKSWAGEN'); ?>>VOLKSWAGEN</option>
+                    <option value="CIBANCO" <?php selected($colbanco, 'CIBANCO'); ?>>CIBANCO</option>
+                    <option value="BBASE" <?php selected($colbanco, 'BBASE'); ?>>BBASE</option>
+                    <option value="BANSEFI" <?php selected($colbanco, 'BANSEFI'); ?>>BANSEFI</option>
+                    <option value="HIPOTECARIA FEDERAL" <?php selected($colbanco, 'HIPOTECARIA FEDERAL'); ?>>HIPOTECARIA FEDERAL</option>
+                    <option value="MONEXCB" <?php selected($colbanco, 'MONEXCB'); ?>>MONEXCB</option>
+                    <option value="GBM" <?php selected($colbanco, 'GBM'); ?>>GBM</option>
+                    <option value="MASARI" <?php selected($colbanco, 'MASARI'); ?>>MASARI</option>
+                    <option value="VALUE" <?php selected($colbanco, 'VALUE'); ?>>VALUE</option>
+                    <option value="ESTRUCTURADORES" <?php selected($colbanco, 'ESTRUCTURADORES'); ?>>ESTRUCTURADORES</option>
+                    <option value="TIBER" <?php selected($colbanco, 'TIBER'); ?>>TIBER</option>
+                    <option value="VECTOR" <?php selected($colbanco, 'VECTOR'); ?>>VECTOR</option>
+                    <option value="B&B" <?php selected($colbanco, 'B&B'); ?>>B&B</option>
+                    <option value="ACCIVAL" <?php selected($colbanco, 'ACCIVAL'); ?>>ACCIVAL</option>
+                    <option value="MERRILL LYNCH" <?php selected($colbanco, 'MERRILL LYNCH'); ?>>MERRILL LYNCH</option>
+                    <option value="FINAMEX" <?php selected($colbanco, 'FINAMEX'); ?>>FINAMEX</option>
+                    <option value="VALMEX" <?php selected($colbanco, 'VALMEX'); ?>>VALMEX</option>
+                    <option value="UNICA" <?php selected($colbanco, 'UNICA'); ?>>UNICA</option>
+                    <option value="MAPFRE" <?php selected($colbanco, 'MAPFRE'); ?>>MAPFRE</option>
+                    <option value="PROFUTURO" <?php selected($colbanco, 'PROFUTURO'); ?>>PROFUTURO</option>
+                    <option value="CB ACTINVER" <?php selected($colbanco, 'CB ACTINVER'); ?>>CB ACTINVER</option>
+                    <option value="OACTIN" <?php selected($colbanco, 'OACTIN'); ?>>OACTIN</option>
+                    <option value="SKANDIA" <?php selected($colbanco, 'SKANDIA'); ?>>SKANDIA</option>
+                    <option value="CBDEUTSCHE" <?php selected($colbanco, 'CBDEUTSCHE'); ?>>CBDEUTSCHE</option>
+                    <option value="ZURICH" <?php selected($colbanco, 'ZURICH'); ?>>ZURICH</option>
+                    <option value="ZURICHVI" <?php selected($colbanco, 'ZURICHVI'); ?>>ZURICHVI</option>
+                    <option value="SU CASITA" <?php selected($colbanco, 'SU CASITA'); ?>>SU CASITA</option>
+                    <option value="CB INTERCAM" <?php selected($colbanco, 'CB INTERCAM'); ?>>CB INTERCAM</option>
+                    <option value="CI BOLSA" <?php selected($colbanco, 'CI BOLSA'); ?>>CI BOLSA</option>
+                    <option value="BULLTICK CB" <?php selected($colbanco, 'BULLTICK CB'); ?>>BULLTICK CB</option>
+                    <option value="STERLING" <?php selected($colbanco, 'STERLING'); ?>>STERLING</option>
+                    <option value="FINCOMUN" <?php selected($colbanco, 'FINCOMUN'); ?>>FINCOMUN</option>
+                    <option value="HDI SEGUROS" <?php selected($colbanco, 'HDI SEGUROS'); ?>>HDI SEGUROS</option>
+                    <option value="ORDER" <?php selected($colbanco, 'ORDER'); ?>>ORDER</option>
+                    <option value="AKALA" <?php selected($colbanco, 'AKALA'); ?>>AKALA</option>
+                    <option value="CB JPMORGAN" <?php selected($colbanco, 'CB JPMORGAN'); ?>>CB JPMORGAN</option>
+                    <option value="REFORMA" <?php selected($colbanco, 'REFORMA'); ?>>REFORMA</option>
+                    <option value="STP" <?php selected($colbanco, 'STP'); ?>>STP</option>
+                    <option value="TELECOMM" <?php selected($colbanco, 'TELECOMM'); ?>>TELECOMM</option>
+                    <option value="EVERCORE" <?php selected($colbanco, 'EVERCORE'); ?>>EVERCORE</option>
+                    <option value="SKANDIA" <?php selected($colbanco, 'SKANDIA'); ?>>SKANDIA</option>
+                    <option value="SEGMTY" <?php selected($colbanco, 'SEGMTY'); ?>>SEGMTY</option>
+                    <option value="ASEA" <?php selected($colbanco, 'ASEA'); ?>>ASEA</option>
+                    <option value="KUSPIT" <?php selected($colbanco, 'KUSPIT'); ?>>KUSPIT</option>
+                    <option value="SOFIEXPRESS" <?php selected($colbanco, 'SOFIEXPRESS'); ?>>SOFIEXPRESS</option>
+                    <option value="UNAGRA" <?php selected($colbanco, 'UNAGRA'); ?>>UNAGRA</option>
+                    <option value="OPCIONES EMPRESARIALES DEL NOROESTE" <?php selected($colbanco, 'OPCIONES EMPRESARIALES DEL NOROESTE'); ?>>OPCIONES EMPRESARIALES DEL NOROESTE</option>
+                    <option value="CLS" <?php selected($colbanco, 'CLS'); ?>>CLS</option>
+                    <option value="INDEVAL" <?php selected($colbanco, 'INDEVAL'); ?>>INDEVAL</option>
+                    <option value="LIBERTAD" <?php selected($colbanco, 'LIBERTAD'); ?>>LIBERTAD</option>
+                    <option value="N/A" <?php selected($colbanco, 'N/A'); ?>>N/A</option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <th><label for="colaborador_colncuenta">No. cuenta</label></th>
+            <td><input type="text" id="colaborador_colncuenta" name="colaborador_colncuenta" value="<?php echo $colncuenta; ?>" placeholder="Sin espacios"></td>
+        </tr>
+        <tr>
+            <th><label for="colaborador_colclaveint">CLABE interbancaria</label></th>
+            <td><input type="text" id="colaborador_colclaveint" name="colaborador_colclaveint" value="<?php echo $colclaveint; ?>" maxlength="18" placeholder="Sin espacios"></td>
+        </tr>
+        <tr>
+            <th><label for="colaborador_colnotarjeta">Número de tarjeta</label></th>
+            <td><input type="text" id="colaborador_colnotarjeta" name="colaborador_colnotarjeta" value="<?php echo $colnotarjeta; ?>" maxlength="16" placeholder="Sin espacios"></td>
+        </tr>
+        <tr>
+            <th><label for="colaborador_colcorreo">Correo Electrónico</label></th>
+            <td><input type="email" id="colaborador_colcorreo" name="colaborador_colcorreo" value="<?php echo $colcorreo; ?>" placeholder="promotor@email.com"></td>
+        </tr>
+        <tr>
+            <th><label for="colaborador_colvaldes">Vales de despensa</label></th>
+            <td>
+				<select name="colaborador_colvaldes">
+                    <option value="" <?php selected($colvaldes, ''); ?> disabled selected>Selecciona...</option>
+                    <option value="Sí" <?php selected($colvaldes, 'Sí'); ?>>Sí</option>
+                    <option value="No" <?php selected($colvaldes, 'No'); ?>>No</option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <th><label for="colaborador_colvalcant">Monto de despensa</label></th>
+            <td><input type="number" id="colaborador_colvalcant" name="colaborador_colvalcant" value="<?php echo $colvalcant; ?>" step="0.01" placeholder="0.00"></td>
         </tr>
         <tr>
             <th><label for="colaborador_colapriv">Aviso de privacidad</label></th>
@@ -309,24 +643,24 @@ function display_colaborador_atributos( $colaborador ){
             </td>
         </tr>
         <tr>
-            <th><label for="colaborador_colubicacion" class="margin-bottom-20">Ubicación</label></th>
-            <td class="padding-bottom-20"><input type="text" id="colaborador_colubicacion" name="colaborador_colubicacion" value="<?php echo $colubicacion; ?>" placeholder="Ciudad de México"></td>
+            <th><label for="colaborador_colpsico">Pruebas psicométricas</label></th>
+            <td>
+				<select name="colaborador_colpsico">
+                    <option value="" <?php selected($colpsico, ''); ?> disabled selected>Selecciona...</option>
+                    <option value="Sí" <?php selected($colpsico, 'Sí'); ?>>Sí</option>
+                    <option value="No" <?php selected($colpsico, 'No'); ?>>No</option>
+                </select>
+            </td>
         </tr>
         <tr>
-            <th><label for="colaborador_colbanco">Banco</label></th>
-            <td><input type="text" id="colaborador_colbanco" name="colaborador_colbanco" value="<?php echo $colbanco; ?>" placeholder="Citibanamex"></td>
-        </tr>
-        <tr>
-            <th><label for="colaborador_colncuenta">No. cuenta</label></th>
-            <td><input type="number" id="colaborador_colncuenta" name="colaborador_colncuenta" value="<?php echo $colncuenta; ?>" placeholder="Sin espacios"></td>
-        </tr>
-        <tr>
-            <th><label for="colaborador_colclaveint">CLABE interbancaria</label></th>
-            <td><input type="number" id="colaborador_colclaveint" name="colaborador_colclaveint" value="<?php echo $colclaveint; ?>" placeholder="Sin espacios"></td>
-        </tr>
-        <tr>
-            <th><label for="colaborador_colcorreo">Correo Electrónico</label></th>
-            <td><input type="email" id="colaborador_colcorreo" name="colaborador_colcorreo" value="<?php echo $colcorreo; ?>" placeholder="promotor@email.com"></td>
+            <th><label for="colaborador_colcredencial">Credencial</label></th>
+            <td>
+				<select name="colaborador_colcredencial">
+                    <option value="" <?php selected($colcredencial, ''); ?> disabled selected>Selecciona...</option>
+                    <option value="Sí" <?php selected($colcredencial, 'Sí'); ?>>Sí</option>
+                    <option value="No" <?php selected($colcredencial, 'No'); ?>>No</option>
+                </select>
+            </td>
         </tr>
         <tr>
             <th><label for="colaborador_colobserv" class="margin-bottom-20">Observaciones</label></th>
@@ -341,17 +675,41 @@ function colaborador_save_metas( $idcolaborador, $colaborador ){
         if ( isset( $_POST['colaborador_colnumemp'] ) ){
             update_post_meta( $idcolaborador, 'colaborador_colnumemp', $_POST['colaborador_colnumemp'] );
         }
+        if ( isset( $_POST['colaborador_colnombre'] ) ){
+            update_post_meta( $idcolaborador, 'colaborador_colnombre', $_POST['colaborador_colnombre'] );
+        }
+        if ( isset( $_POST['colaborador_colapepat'] ) ){
+            update_post_meta( $idcolaborador, 'colaborador_colapepat', $_POST['colaborador_colapepat'] );
+        }
+        if ( isset( $_POST['colaborador_colapemat'] ) ){
+            update_post_meta( $idcolaborador, 'colaborador_colapemat', $_POST['colaborador_colapemat'] );
+        }
         if ( isset( $_POST['colaborador_colestado'] ) ){
             update_post_meta( $idcolaborador, 'colaborador_colestado', $_POST['colaborador_colestado'] );
         }
         if ( isset( $_POST['colaborador_colrsocial'] ) ){
             update_post_meta( $idcolaborador, 'colaborador_colrsocial', $_POST['colaborador_colrsocial'] );
         }
-        if ( isset( $_POST['colaborador_coldireccion'] ) ){
-            update_post_meta( $idcolaborador, 'colaborador_coldireccion', $_POST['colaborador_coldireccion'] );
+        if ( isset( $_POST['colaborador_colcliente'] ) ){
+            update_post_meta( $idcolaborador, 'colaborador_colcliente', $_POST['colaborador_colcliente'] );
         }
-        if ( isset( $_POST['colaborador_colcp'] ) ){
-            update_post_meta( $idcolaborador, 'colaborador_colcp', $_POST['colaborador_colcp'] );
+        if ( isset( $_POST['colaborador_coldcalle'] ) ){
+            update_post_meta( $idcolaborador, 'colaborador_coldcalle', $_POST['colaborador_coldcalle'] );
+        }
+        if ( isset( $_POST['colaborador_coldnum'] ) ){
+            update_post_meta( $idcolaborador, 'colaborador_coldnum', $_POST['colaborador_coldnum'] );
+        }
+        if ( isset( $_POST['colaborador_coldcol'] ) ){
+            update_post_meta( $idcolaborador, 'colaborador_coldcol', $_POST['colaborador_coldcol'] );
+        }
+        if ( isset( $_POST['colaborador_colddel'] ) ){
+            update_post_meta( $idcolaborador, 'colaborador_colddel', $_POST['colaborador_colddel'] );
+        }
+        if ( isset( $_POST['colaborador_coldest'] ) ){
+            update_post_meta( $idcolaborador, 'colaborador_coldest', $_POST['colaborador_coldest'] );
+        }
+        if ( isset( $_POST['colaborador_coldcp'] ) ){
+            update_post_meta( $idcolaborador, 'colaborador_coldcp', $_POST['colaborador_coldcp'] );
         }
         if ( isset( $_POST['colaborador_coltel'] ) ){
             update_post_meta( $idcolaborador, 'colaborador_coltel', $_POST['colaborador_coltel'] );
@@ -374,20 +732,20 @@ function colaborador_save_metas( $idcolaborador, $colaborador ){
         if ( isset( $_POST['colaborador_colfnacim'] ) ){
             update_post_meta( $idcolaborador, 'colaborador_colfnacim', $_POST['colaborador_colfnacim'] );
         }
-        if ( isset( $_POST['colaborador_colpresta'] ) ){
-            update_post_meta( $idcolaborador, 'colaborador_colpresta', $_POST['colaborador_colpresta'] );
-        }
-        if ( isset( $_POST['colaborador_colcliente'] ) ){
-            update_post_meta( $idcolaborador, 'colaborador_colcliente', $_POST['colaborador_colcliente'] );
-        }
         if ( isset( $_POST['colaborador_colpuesto'] ) ){
             update_post_meta( $idcolaborador, 'colaborador_colpuesto', $_POST['colaborador_colpuesto'] );
+        }
+        if ( isset( $_POST['colaborador_colpresta'] ) ){
+            update_post_meta( $idcolaborador, 'colaborador_colpresta', $_POST['colaborador_colpresta'] );
         }
         if ( isset( $_POST['colaborador_colingreso'] ) ){
             update_post_meta( $idcolaborador, 'colaborador_colingreso', $_POST['colaborador_colingreso'] );
         }
         if ( isset( $_POST['colaborador_colsueldo'] ) ){
             update_post_meta( $idcolaborador, 'colaborador_colsueldo', $_POST['colaborador_colsueldo'] );
+        }
+        if ( isset( $_POST['colaborador_colsueldot'] ) ){
+            update_post_meta( $idcolaborador, 'colaborador_colsueldot', $_POST['colaborador_colsueldot'] );
         }
         if ( isset( $_POST['colaborador_colnomina'] ) ){
             update_post_meta( $idcolaborador, 'colaborador_colnomina', $_POST['colaborador_colnomina'] );
@@ -410,14 +768,20 @@ function colaborador_save_metas( $idcolaborador, $colaborador ){
         if ( isset( $_POST['colaborador_colinfonavit'] ) ){
             update_post_meta( $idcolaborador, 'colaborador_colinfonavit', $_POST['colaborador_colinfonavit'] );
         }
-        if ( isset( $_POST['colaborador_colncredit'] ) ){
-            update_post_meta( $idcolaborador, 'colaborador_colncredit', $_POST['colaborador_colncredit'] );
+        if ( isset( $_POST['colaborador_colncredinf'] ) ){
+            update_post_meta( $idcolaborador, 'colaborador_colncredinf', $_POST['colaborador_colncredinf'] );
         }
-        if ( isset( $_POST['colaborador_colvdesc'] ) ){
-            update_post_meta( $idcolaborador, 'colaborador_colvdesc', $_POST['colaborador_colvdesc'] );
+        if ( isset( $_POST['colaborador_coltdesc'] ) ){
+            update_post_meta( $idcolaborador, 'colaborador_coltdesc', $_POST['colaborador_coltdesc'] );
         }
-        if ( isset( $_POST['colaborador_colapriv'] ) ){
-            update_post_meta( $idcolaborador, 'colaborador_colapriv', $_POST['colaborador_colapriv'] );
+        if ( isset( $_POST['colaborador_colfonacot'] ) ){
+            update_post_meta( $idcolaborador, 'colaborador_colfonacot', $_POST['colaborador_colfonacot'] );
+        }
+        if ( isset( $_POST['colaborador_colncredfon'] ) ){
+            update_post_meta( $idcolaborador, 'colaborador_colncredfon', $_POST['colaborador_colncredfon'] );
+        }
+        if ( isset( $_POST['colaborador_colpensali'] ) ){
+            update_post_meta( $idcolaborador, 'colaborador_colpensali', $_POST['colaborador_colpensali'] );
         }
         if ( isset( $_POST['colaborador_colubicacion'] ) ){
             update_post_meta( $idcolaborador, 'colaborador_colubicacion', $_POST['colaborador_colubicacion'] );
@@ -431,8 +795,26 @@ function colaborador_save_metas( $idcolaborador, $colaborador ){
         if ( isset( $_POST['colaborador_colclaveint'] ) ){
             update_post_meta( $idcolaborador, 'colaborador_colclaveint', $_POST['colaborador_colclaveint'] );
         }
+        if ( isset( $_POST['colaborador_colnotarjeta'] ) ){
+            update_post_meta( $idcolaborador, 'colaborador_colnotarjeta', $_POST['colaborador_colnotarjeta'] );
+        }
         if ( isset( $_POST['colaborador_colcorreo'] ) ){
             update_post_meta( $idcolaborador, 'colaborador_colcorreo', $_POST['colaborador_colcorreo'] );
+        }
+        if ( isset( $_POST['colaborador_colvaldes'] ) ){
+            update_post_meta( $idcolaborador, 'colaborador_colvaldes', $_POST['colaborador_colvaldes'] );
+        }
+        if ( isset( $_POST['colaborador_colvalcant'] ) ){
+            update_post_meta( $idcolaborador, 'colaborador_colvalcant', $_POST['colaborador_colvalcant'] );
+        }
+        if ( isset( $_POST['colaborador_colapriv'] ) ){
+            update_post_meta( $idcolaborador, 'colaborador_colapriv', $_POST['colaborador_colapriv'] );
+        }
+        if ( isset( $_POST['colaborador_colpsico'] ) ){
+            update_post_meta( $idcolaborador, 'colaborador_colpsico', $_POST['colaborador_colpsico'] );
+        }
+        if ( isset( $_POST['colaborador_colcredencial'] ) ){
+            update_post_meta( $idcolaborador, 'colaborador_colcredencial', $_POST['colaborador_colcredencial'] );
         }
         if ( isset( $_POST['colaborador_colobserv'] ) ){
             update_post_meta( $idcolaborador, 'colaborador_colobserv', $_POST['colaborador_colobserv'] );
