@@ -165,7 +165,7 @@ function display_colaborador_atributos( $colaborador ){
     $colsueldot = esc_html( get_post_meta( $colaborador->ID, 'colaborador_colsueldot', true ) );
     $colnomina  = esc_html( get_post_meta( $colaborador->ID, 'colaborador_colnomina', true ) );
     $colvence   = esc_html( get_post_meta( $colaborador->ID, 'colaborador_colvence', true ) );
-    $colfirma   = esc_html( get_post_meta( $colaborador->ID, 'colaborador_colfirma', true ) );
+    $colinicia   = esc_html( get_post_meta( $colaborador->ID, 'colaborador_colinicia', true ) );
     $coldcontrato = esc_html( get_post_meta( $colaborador->ID, 'colaborador_coldcontrato', true ) );
     $colecivil  = esc_html( get_post_meta( $colaborador->ID, 'colaborador_colecivil', true ) );
     $colsexo    = esc_html( get_post_meta( $colaborador->ID, 'colaborador_colsexo', true ) );
@@ -189,6 +189,21 @@ function display_colaborador_atributos( $colaborador ){
 ?>
     <table class="aes-custum-fields" id="aes_table-colaboradores">
         <tr>
+            <th><label for="colaborador_colestado" class="margin-bottom-20">Estado</label></th>
+            <td class="padding-bottom-30">
+				<select name="colaborador_colestado">
+                    <option value="" <?php selected($colestado, ''); ?> disabled selected>Selecciona...</option>
+                    <option value="Activo" <?php selected($colestado, 'Activo'); ?>>Activo</option>
+                    <option value="Inactivo" <?php selected($colestado, 'Inactivo'); ?>>Inactivo</option>
+                </select>
+            </td>
+        </tr>
+
+        <tr>
+            <th><label for="colaborador_colnumemp">No. Empleado</label></th>
+            <td><input type="number" id="colaborador_colnumemp" name="colaborador_colnumemp" value="<?php echo $colnumemp; ?>" placeholder="0"></td>
+        </tr>
+        <tr>
             <th><label for="colaborador_colnombre">Nombre(s)</label></th>
             <td><input type="text" id="colaborador_colnombre" name="colaborador_colnombre" value="<?php echo $colnombre; ?>"></td>
         </tr>
@@ -198,22 +213,9 @@ function display_colaborador_atributos( $colaborador ){
         </tr>
         <tr>
             <th><label for="colaborador_colapemat" class="margin-bottom-20">Apellido materno</label></th>
-            <td class="padding-bottom-20"><input type="text" id="colaborador_colapemat" name="colaborador_colapemat" value="<?php echo $colapemat; ?>"></td>
+            <td class="padding-bottom-30"><input type="text" id="colaborador_colapemat" name="colaborador_colapemat" value="<?php echo $colapemat; ?>"></td>
         </tr>
-        <tr>
-            <th><label for="colaborador_colnumemp">No. Empleado</label></th>
-            <td><input type="number" id="colaborador_colnumemp" name="colaborador_colnumemp" value="<?php echo $colnumemp; ?>" placeholder="0"></td>
-        </tr>
-        <tr>
-            <th><label for="colaborador_colestado" class="margin-bottom-20">Estado</label></th>
-            <td class="padding-bottom-20">
-				<select name="colaborador_colestado">
-                    <option value="" <?php selected($colestado, ''); ?> disabled selected>Selecciona...</option>
-                    <option value="Activo" <?php selected($colestado, 'Activo'); ?>>Activo</option>
-                    <option value="Inactivo" <?php selected($colestado, 'Inactivo'); ?>>Inactivo</option>
-                </select>
-            </td>
-        </tr>
+
         <tr>
             <th><label for="colaborador_colrsocial">Razón social</label></th>
             <td>
@@ -229,8 +231,9 @@ function display_colaborador_atributos( $colaborador ){
         </tr>        
         <tr>
             <th><label for="colaborador_colcliente" class="margin-bottom-20">Cliente</label></th>
-            <td class="padding-bottom-20"><input type="text" id="colaborador_colcliente" name="colaborador_colcliente" value="<?php echo $colcliente; ?>" placeholder="Mazda Tláhuac"></td>
+            <td class="padding-bottom-30"><input type="text" id="colaborador_colcliente" name="colaborador_colcliente" value="<?php echo $colcliente; ?>" placeholder="Mazda Tláhuac"></td>
         </tr>
+
         <tr>
             <th><label for="colaborador_coldcalle">Calle</label></th>
             <td><input type="text" id="colaborador_coldcalle" name="colaborador_coldcalle" value="<?php echo $coldcalle; ?>"></td>
@@ -289,16 +292,18 @@ function display_colaborador_atributos( $colaborador ){
         </tr>
         <tr>
             <th><label for="colaborador_coldcp" class="margin-bottom-20">C.P.</label></th>
-            <td class="padding-bottom-20"><input type="number" id="colaborador_coldcp" name="colaborador_coldcp" value="<?php echo $coldcp; ?>" placeholder="11000"></td>
+            <td class="padding-bottom-30"><input type="number" id="colaborador_coldcp" name="colaborador_coldcp" value="<?php echo $coldcp; ?>" placeholder="11000"></td>
         </tr>
+
         <tr>
             <th><label for="colaborador_coltel">Teléfono casa</label></th>
             <td><input type="text" id="colaborador_coltel" name="colaborador_coltel" value="<?php echo $coltel; ?>" placeholder="55 5050 5050"></td>
         </tr>
         <tr>
             <th><label for="colaborador_colcel" class="margin-bottom-20">Teléfono Celular</label></th>
-            <td class="padding-bottom-20"><input type="text" id="colaborador_colcel" name="colaborador_colcel" value="<?php echo $colcel; ?>" placeholder="55 5050 5050"></td>
+            <td class="padding-bottom-30"><input type="text" id="colaborador_colcel" name="colaborador_colcel" value="<?php echo $colcel; ?>" placeholder="55 5050 5050"></td>
         </tr>
+
         <tr>
             <th><label for="colaborador_collnacim">Lugar de Nacimiento</label></th>
             <td>
@@ -358,7 +363,7 @@ function display_colaborador_atributos( $colaborador ){
         </tr>
         <tr>
             <th><label for="colaborador_colsexo" class="margin-bottom-20">Sexo</label></th>
-            <td class="padding-bottom-20">
+            <td class="padding-bottom-30">
 				<select name="colaborador_colsexo">
                     <option value="" <?php selected($colsexo, ''); ?> disabled selected>Selecciona...</option>
                     <option value="Masculino" <?php selected($colsexo, 'Masculino'); ?>>Masculino</option>
@@ -366,6 +371,7 @@ function display_colaborador_atributos( $colaborador ){
                 </select>
             </td>
         </tr>
+
         <tr>
             <th><label for="colaborador_colcurp">CURP</label></th>
             <td><input type="text" id="colaborador_colcurp" name="colaborador_colcurp" value="<?php echo $colcurp; ?>" maxlength="18" placeholder="Sin espacios"></td>
@@ -376,8 +382,9 @@ function display_colaborador_atributos( $colaborador ){
         </tr>
         <tr>
             <th><label for="colaborador_colnss" class="margin-bottom-20">NSS</label></th>
-            <td class="padding-bottom-20"><input type="text" id="colaborador_colnss" name="colaborador_colnss" value="<?php echo $colnss; ?>"maxlength="11" placeholder="Sin espacios"></td>
+            <td class="padding-bottom-30"><input type="text" id="colaborador_colnss" name="colaborador_colnss" value="<?php echo $colnss; ?>"maxlength="11" placeholder="Sin espacios"></td>
         </tr>
+
         <tr>
             <th><label for="colaborador_colpuesto">Puesto</label></th>
             <td><input type="text" id="colaborador_colpuesto" name="colaborador_colpuesto" value="<?php echo $colpuesto; ?>" placeholder="Promotor"></td>
@@ -393,8 +400,8 @@ function display_colaborador_atributos( $colaborador ){
             </td>
         </tr>
         <tr>
-            <th><label for="colaborador_colubicacion">Ubicación</label></th>
-            <td>
+            <th><label for="colaborador_colubicacion" class="margin-bottom-20">Ubicación</label></th>
+            <td class="padding-bottom-30">
 				<select name="colaborador_colubicacion">
                     <option value="" <?php selected($colubicacion, ''); ?> disabled selected>Selecciona...</option>
                     <option value="Aguascalientes" <?php selected($colubicacion, 'Aguascalientes'); ?>>Aguascalientes</option>
@@ -454,16 +461,16 @@ function display_colaborador_atributos( $colaborador ){
             </td>
         </tr>
         <tr>
+            <th><label for="colaborador_colinicia">Inicio de contrato</label></th>
+            <td><input type="date" id="colaborador_colinicia" name="colaborador_colinicia" value="<?php echo $colinicia; ?>"></td>
+        </tr>
+        <tr>
             <th><label for="colaborador_colvence">Vencimiento de contrato</label></th>
             <td><input type="date" id="colaborador_colvence" name="colaborador_colvence" value="<?php echo $colvence; ?>"></td>
         </tr>
         <tr>
-            <th><label for="colaborador_colfirma">Fecha de firma</label></th>
-            <td><input type="date" id="colaborador_colfirma" name="colaborador_colfirma" value="<?php echo $colfirma; ?>"></td>
-        </tr>
-        <tr>
             <th><label for="colaborador_coldcontrato" class="margin-bottom-20">Días de Contrato</label></th>
-            <td class="padding-bottom-20"><input type="number" id="colaborador_coldcontrato" name="colaborador_coldcontrato" value="<?php echo $coldcontrato; ?>" placeholder="30"></td>
+            <td class="padding-bottom-30"><input type="number" id="colaborador_coldcontrato" name="colaborador_coldcontrato" value="<?php echo $coldcontrato; ?>" placeholder="30"></td>
         </tr>
         <tr>
             <th><label for="colaborador_colinfonavit">Infonavit</label></th>
@@ -498,8 +505,8 @@ function display_colaborador_atributos( $colaborador ){
             <td><input type="text" id="colaborador_colncredfon" name="colaborador_colncredfon" value="<?php echo $colncredfon; ?>"></td>
         </tr>  
         <tr>
-            <th><label for="colaborador_colpensali">Pensión alimenticia</label></th>
-            <td><textarea name="colaborador_colpensali" rows="5"><?php echo $colpensali; ?></textarea></td>
+            <th><label for="colaborador_colpensali" class="margin-bottom-20">Pensión alimenticia</label></th>
+            <td class="padding-bottom-30"><textarea name="colaborador_colpensali" rows="5"><?php echo $colpensali; ?></textarea></td>
         </tr> <!-- Campo abierto -->
         <tr>
             <th><label for="colaborador_colbanco">Banco</label></th>
@@ -615,8 +622,8 @@ function display_colaborador_atributos( $colaborador ){
             <td><input type="text" id="colaborador_colnotarjeta" name="colaborador_colnotarjeta" value="<?php echo $colnotarjeta; ?>" maxlength="16" placeholder="Sin espacios"></td>
         </tr>
         <tr>
-            <th><label for="colaborador_colcorreo">Correo Electrónico</label></th>
-            <td><input type="email" id="colaborador_colcorreo" name="colaborador_colcorreo" value="<?php echo $colcorreo; ?>" placeholder="promotor@email.com"></td>
+            <th><label for="colaborador_colcorreo" class="margin-bottom-20">Correo Electrónico</label></th>
+            <td class="padding-bottom-30"><input type="email" id="colaborador_colcorreo" name="colaborador_colcorreo" value="<?php echo $colcorreo; ?>" placeholder="promotor@email.com"></td>
         </tr>
         <tr>
             <th><label for="colaborador_colvaldes">Vales de despensa</label></th>
@@ -629,8 +636,8 @@ function display_colaborador_atributos( $colaborador ){
             </td>
         </tr>
         <tr>
-            <th><label for="colaborador_colvalcant">Monto de despensa</label></th>
-            <td><input type="number" id="colaborador_colvalcant" name="colaborador_colvalcant" value="<?php echo $colvalcant; ?>" step="0.01" placeholder="0.00"></td>
+            <th><label for="colaborador_colvalcant" class="margin-bottom-20">Monto de despensa</label></th>
+            <td class="padding-bottom-30"><input type="number" id="colaborador_colvalcant" name="colaborador_colvalcant" value="<?php echo $colvalcant; ?>" step="0.01" placeholder="0.00"></td>
         </tr>
         <tr>
             <th><label for="colaborador_colapriv">Aviso de privacidad</label></th>
@@ -664,7 +671,7 @@ function display_colaborador_atributos( $colaborador ){
         </tr>
         <tr>
             <th><label for="colaborador_colobserv" class="margin-bottom-20">Observaciones</label></th>
-            <td class="padding-bottom-20"><textarea name="colaborador_colobserv" rows="5" placeholder="Comentarios adicionales"><?php echo $colobserv; ?></textarea></td>
+            <td class="padding-bottom-30"><textarea name="colaborador_colobserv" rows="5" placeholder="Comentarios adicionales"><?php echo $colobserv; ?></textarea></td>
         </tr>
     </table>
 <?php }
@@ -753,8 +760,8 @@ function colaborador_save_metas( $idcolaborador, $colaborador ){
         if ( isset( $_POST['colaborador_colvence'] ) ){
             update_post_meta( $idcolaborador, 'colaborador_colvence', $_POST['colaborador_colvence'] );
         }
-        if ( isset( $_POST['colaborador_colfirma'] ) ){
-            update_post_meta( $idcolaborador, 'colaborador_colfirma', $_POST['colaborador_colfirma'] );
+        if ( isset( $_POST['colaborador_colinicia'] ) ){
+            update_post_meta( $idcolaborador, 'colaborador_colinicia', $_POST['colaborador_colinicia'] );
         }
         if ( isset( $_POST['colaborador_coldcontrato'] ) ){
             update_post_meta( $idcolaborador, 'colaborador_coldcontrato', $_POST['colaborador_coldcontrato'] );
@@ -889,7 +896,7 @@ function display_formato_atributos( $formato ){
     <table class="aes-custum-fields" id="aes_table-formato">
         <tr>
             <th><label class="margin-bottom-20">Archivo</label></th>
-			<td class="padding-bottom-20">
+			<td class="padding-bottom-30">
 				<div class="input-image">
 					<input type="text" name="formato_farchivo" id="formato_farchivo" class="meta-image" placeholder="Elegir archivo" value="<?php echo $farchivo; ?>">
 				<input type="button" class="button image-upload" value="Seleccionar">
@@ -958,13 +965,13 @@ function custom_colaborador_column( $column, $post_id ) {
         case 'aes_contrato' :
             $colingreso = get_post_meta( $post_id, 'colaborador_colingreso', true );
             $colvence  	= get_post_meta( $post_id, 'colaborador_colvence', true );
-            $colfirma  	= get_post_meta( $post_id, 'colaborador_colfirma', true );
+            $colinicia  = get_post_meta( $post_id, 'colaborador_colinicia', true );
             if( $colingreso != "")
                 echo "Ingreso: " . date('d/m/Y', strtotime($colingreso)) . "</br>";
             else
                 echo "-</br>";
-            if( $colfirma != "")
-            	echo "Firma: " . date('d/m/Y', strtotime($colfirma)) . "</br>";
+            if( $colinicia != "")
+            	echo "Firma: " . date('d/m/Y', strtotime($colinicia)) . "</br>";
             else
                 echo "-</br>";
             if( $colvence != "")

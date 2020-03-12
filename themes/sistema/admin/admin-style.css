@@ -2,7 +2,7 @@
 .margin-bottom-20		{ margin-bottom: 20px; }
 
 .padding-bottom-10		{ padding-bottom: 10px; }
-.padding-bottom-20		{ padding-bottom: 20px; }
+.padding-bottom-30		{ padding-bottom: 30px!important; }
 
 .mqt-custom-fields		{ width: 100%; }
 .mqt-custom-fields label  { 
@@ -28,6 +28,7 @@ table.aes-custum-fields tr th label {
 	display: block; 
 	text-align: left;
 }
+table.aes-custum-fields tr td { padding-bottom: 5px; }
 table.aes-custum-fields  tr td input::-webkit-input-placeholder,
 table.aes-custum-fields  tr td textarea::-webkit-input-placeholder { color: #c3c3c3; }
 table.aes-custum-fields  tr td input:-ms-input-placeholder,
