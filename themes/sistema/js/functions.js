@@ -29,7 +29,7 @@ var $=jQuery.noConflict();
 		// } 
 
 		// Modal
-		$(".open-modal").click(function() {
+		/*$(".open-modal").click(function() {
 			var idModal = $(this).attr('id');
 			$('#modal-' + idModal).show();
 			$('body').addClass('overflow-hide');
@@ -37,6 +37,11 @@ var $=jQuery.noConflict();
 		$(".close-modal, .exit-modal").click(function() {
 			$('.modal').hide();
 			$('body').removeClass('overflow-hide');
+		});*/
+
+		/* Botón imprimir*/
+		$("#print-page").click(function() {
+			window.print();
 		});
 
 	});

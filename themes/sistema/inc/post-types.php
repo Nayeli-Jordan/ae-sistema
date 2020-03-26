@@ -29,7 +29,7 @@ add_action('init', function(){
 		'capability_type'    => 'post',
 		'has_archive'        => true,
 		'hierarchical'       => false,
-		'menu_position'      => 6,
+		'menu_position'      => 2,
 		'supports'           => array( 'title', 'thumbnail' ),
 		'menu_icon' 		 => 'dashicons-admin-users'
 	);
@@ -61,43 +61,11 @@ add_action('init', function(){
 		'capability_type'    => 'post',
 		'has_archive'        => true,
 		'hierarchical'       => false,
-		'menu_position'      => 6,
+		'menu_position'      => 3,
 		'supports'           => array( 'title', 'thumbnail' ),
 		'menu_icon' 		 => 'dashicons-building'
 	);
 	register_post_type( 'rsocial', $args );
-
-
-	// Razón 1
-	$labels = array(
-		'name'          => 'Contratos',
-		'singular_name' => 'Contratos',
-		'add_new'       => 'Nuevo contrato',
-		'add_new_item'  => 'Nuevo contrato',
-		'edit_item'     => 'Editar contrato',
-		'new_item'      => 'Nuevo contrato',
-		'all_items'     => 'Contratos',
-		'view_item'     => 'Ver contrato',
-		'search_items'  => 'Buscar contrato',
-		'not_found'     => 'No hay contrato',
-		'menu_name'     => 'Contratos'
-	);
-	$args = array(
-		'labels'             => $labels,
-		'public'             => true,
-		'publicly_queryable' => true,
-		'show_ui'            => true,
-		'show_in_menu'       => 'edit.php?post_type=rsocial',
-		'query_var'          => true,
-		'rewrite'            => array( 'slug' => 'contrato_rsa' ),
-		'capability_type'    => 'post',
-		'has_archive'        => true,
-		'hierarchical'       => false,
-		'menu_position'      => 6,
-		'supports'           => array( 'title', 'thumbnail' ),
-		'menu_icon' 		 => 'dashicons-building'
-	);
-	register_post_type( 'contrato_rsa', $args );
 
 
 	// Formatos generales
@@ -125,10 +93,44 @@ add_action('init', function(){
 		'capability_type'    => 'post',
 		'has_archive'        => true,
 		'hierarchical'       => false,
-		'menu_position'      => 6,
+		'menu_position'      => 14,
 		'supports'           => array( 'title', 'thumbnail' ),
 		'menu_icon' 		 => 'dashicons-media-text'
 	);
 	register_post_type( 'formato', $args );
+	
+
+
+	// Razón 1
+	$labels = array(
+		'name'          => 'Contratos',
+		'singular_name' => 'Contratos',
+		'add_new'       => 'Nuevo contrato',
+		'add_new_item'  => 'Nuevo contrato',
+		'edit_item'     => 'Editar contrato',
+		'new_item'      => 'Nuevo contrato',
+		'all_items'     => 'Contratos',
+		'view_item'     => 'Ver contrato',
+		'search_items'  => 'Buscar contrato',
+		'not_found'     => 'No hay contrato',
+		'menu_name'     => 'Contratos'
+	);
+	$args = array(
+		'labels'             => $labels,
+		'public'             => true,
+		'publicly_queryable' => true,
+		'show_ui'            => true,
+		'show_in_menu'       => false,
+		//'show_in_menu'       => 'admin.php?page=rs_altoempleo',
+		'query_var'          => true,
+		'rewrite'            => array( 'slug' => 'contrato_rsa' ),
+		'capability_type'    => 'post',
+		'has_archive'        => true,
+		'hierarchical'       => false,
+		'menu_position'      => 6,
+		'supports'           => array( 'title', 'thumbnail' ),
+		'menu_icon' 		 => 'dashicons-building'
+	);
+	register_post_type( 'contrato_rsa', $args );
 
 });

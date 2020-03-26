@@ -26,7 +26,7 @@ add_action( 'wp_enqueue_scripts', function(){
  
 	wp_enqueue_script( 'jquery', 'https://code.jquery.com/jquery-3.2.1.min.js', array(''), '2.1.1', true );
 	// wp_enqueue_script( 'masonry_js', JSPATH.'packery.pkgd.min.js', array(), '', true );
-	/*wp_enqueue_script( 'aes_functions', JSPATH.'functions.js', array(), '1.0', true );*/
+    wp_enqueue_script( 'aes_functions', JSPATH.'functions.js', array(), '1.0', true );
  
 	wp_localize_script( 'aes_functions', 'siteUrl', SITEURL );
 	wp_localize_script( 'aes_functions', 'theme_path', THEMEPATH );
@@ -121,6 +121,29 @@ if(!is_admin()) {
 function woocommerce_support() {
 	add_theme_support( 'woocommerce' );
 }*/
+
+
+/*
+** Custom menu admin
+*/
+add_action( 'admin_menu', 'my_plugin_menu' );
+ function my_plugin_menu(){
+   add_menu_page('Altoempleo s.a. de c.v.', 'Altoempleo', 'manage_options',  'rs_altoempleo', 'my_menu_function', 'dashicons-buddicons-buddypress-logo', '6');
+   add_submenu_page( 'rs_altoempleo', 'Custom Post Type Admin', 'Contratos', 'manage_options','edit.php?post_type=contrato_rsa');
+
+    add_menu_page('Alto empleo de izcalli s.a. de c.v.', 'Alto empleo de izcalli', 'manage_options',  'rs_altoempleo_de_izcalli', 'my_menu_function', 'dashicons-buddicons-buddypress-logo', '7');
+    add_submenu_page( 'rs_altoempleo_de_izcalli', 'Custom Post Type Admin', 'Contratos', 'manage_options','edit.php?post_type=contrato_rsa');
+
+    add_menu_page('Altoempleo tlalnepantla s.a. de c.v.', 'Altoempleo tlalnepantla', 'manage_options',  'rs_altoempleo_tlalnepantla', 'my_menu_function', 'dashicons-buddicons-buddypress-logo', '6');
+    add_submenu_page( 'rs_altoempleo_tlalnepantla', 'Custom Post Type Admin', 'Contratos', 'manage_options','edit.php?post_type=contrato_rsa'); 
+
+    add_menu_page('High enterprises consulting s.a. de c.v.', 'High enterprises consulting', 'manage_options',  'rs_high_enterprises_consulting', 'my_menu_function', 'dashicons-buddicons-buddypress-logo', '7');
+    add_submenu_page( 'rs_high_enterprises_consulting', 'Custom Post Type Admin', 'Contratos', 'manage_options','edit.php?post_type=contrato_rsa'); 
+
+    add_menu_page('Comercializadora bolita s.a. de c.v.', 'Comercializadora bolita', 'manage_options',  'rs_comercializadora_bolita', 'my_menu_function', 'dashicons-buddicons-buddypress-logo', '8');
+    add_submenu_page( 'rs_comercializadora_bolita', 'Custom Post Type Admin', 'Contratos', 'manage_options','edit.php?post_type=contrato_rsa');
+ }
+
 
 
 
@@ -623,7 +646,7 @@ function display_colaborador_atributos( $colaborador ){
         </tr>
         <tr>
             <th><label for="colaborador_colcorreo" class="margin-bottom-20">Correo Electrónico</label></th>
-            <td class="padding-bottom-30"><input type="email" id="colaborador_colcorreo" name="colaborador_colcorreo" value="<?php echo $colcorreo; ?>" placeholder="promotor@email.com"></td>
+            <td class="padding-bottom-30"><input type="email" id="colaborador_colcorreo" name="colaborador_colcorreo" value="<?php echo $colcorreo; ?>" placeholder="colaborador@email.com"></td>
         </tr>
         <tr>
             <th><label for="colaborador_colvaldes">Vales de despensa</label></th>
@@ -880,6 +903,64 @@ function rsocial_save_metas( $idrsocial, $rsocial ){
         }
     }
 }
+
+
+/* Contrato */
+
+
+add_action( 'add_meta_boxes', 'contrato_rsa_custom_metabox' );
+function contrato_rsa_custom_metabox(){
+    add_meta_box( 'contrato_rsa_meta', 'Más Información', 'display_contrato_rsa_atributos', 'contrato_rsa', 'advanced', 'default');
+}
+
+function display_contrato_rsa_atributos( $contrato_rsa ){
+    $cncolaborador = esc_html( get_post_meta( $contrato_rsa->ID, 'contrato_rsa_cncolaborador', true ) );
+?>
+    <table class="ae-custom-fields">
+        <tr>
+            <th colspan="2">
+                <label for="contrato_rsa_cncolaborador">Colaborador</label>
+                <select id="contrato_rsa_cncolaborador" name="contrato_rsa_cncolaborador" required>
+                    <option value="" <?php selected($cncolaborador, ''); ?>></option>
+                    <?php 
+                    $aeColaborador = array(
+                        'post_type'         => 'colaborador',
+                        'posts_per_page'    => -1,
+                        'post_status'       => 'publish',
+                        'orderby'           => 'title',
+                        'order'             => 'ASC',
+                    ); 
+                    $loopColaborador = new WP_Query( $aeColaborador );
+                    if ( $loopColaborador->have_posts() ) {
+                        while ( $loopColaborador->have_posts() ) : $loopColaborador->the_post(); 
+                            $post_id        = get_the_ID();
+                            $cncolaboradorName = get_the_title( $post_id ); ?>
+                            <option value="<?php echo $cncolaboradorName; ?>" <?php selected($cncolaborador, $cncolaboradorName); ?>><?php echo $cncolaboradorName; ?></option>
+                    <?php endwhile; } wp_reset_postdata(); ?>
+                </select>
+            </th>
+        </tr>
+    </table>
+<?php }
+
+add_action( 'save_post', 'contrato_rsa_save_metas', 10, 2 );
+function contrato_rsa_save_metas( $idcontrato_rsa, $contrato_rsa ){
+    //Comprobamos que es del tipo que nos interesa
+    if ( $contrato_rsa->post_type == 'contrato_rsa' ){
+    //Guardamos los datos que vienen en el POST
+        if ( isset( $_POST['contrato_rsa_cncolaborador'] ) ){
+            update_post_meta( $idcontrato_rsa, 'contrato_rsa_cncolaborador', $_POST['contrato_rsa_cncolaborador'] );
+        }
+    }
+}
+
+
+
+
+
+
+
+
 
 
 /* Formatos generales */

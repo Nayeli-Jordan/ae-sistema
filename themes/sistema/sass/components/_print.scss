@@ -1,4 +1,22 @@
 @media print {
 	@page{ margin: 0; }
 	
+	// Formato Carta
+	.formato-carta {
+		background-color: transparent;
+		.single_carta-head,
+		.single_carta-foot { display: none; }
+		.page-carta {
+			margin: 0px;
+			width: 100vw;
+			height: 100vh;
+			max-height: 100vh;
+			box-shadow: none;
+			overflow: hidden;
+			.head-page {  }
+			.body-page {  }
+			.foot-page {  }
+		}		
+	}
+
 }
