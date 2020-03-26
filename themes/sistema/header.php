@@ -57,7 +57,16 @@
 		<?php wp_head(); ?>
 	</head>
 	<body>
-		<header class="js-header">			
+		<header class="js-header">	
+			<div class="container">
+				<div class="row">
+					<div class="col s12 m5 l6" id="logo-altoempleo">
+						<a href="<?php echo SITEURL; ?>">
+							<img class="responsive-img" src="<?php echo THEMEPATH; ?>images/identidad/logo_altoempleo.png">
+						</a>
+					</div>
+				</div>
+			</div>		
 			<nav>
 				<ul class="mb-nav" itemscope>
 					<!-- <?php

@@ -929,6 +929,13 @@ function display_contrato_rsa_atributos( $contrato_rsa ){
                         'post_status'       => 'publish',
                         'orderby'           => 'title',
                         'order'             => 'ASC',
+                        'meta_query'    => array(
+                            array(
+                                'key'       => 'colaborador_colrsocial',
+                                'value'     => 'Altoempleo s.a. de c.v.',
+                                'compare'   => '==='
+                            )
+                        )
                     ); 
                     $loopColaborador = new WP_Query( $aeColaborador );
                     if ( $loopColaborador->have_posts() ) {
